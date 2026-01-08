@@ -1,10 +1,10 @@
 {
-    "client_id": "https://prqwx7th-5173.uks1.devtunnels.ms/client-metadata.json",
+    "client_id": "https://profile.tophhie.social/client-metadata.json",
     "client_name": "Tophhie Social Account",
-    "client_uri": "https://prqwx7th-5173.uks1.devtunnels.ms",
-    "logo_uri": "https://account.tophhie.social/logo.png",
+    "client_uri": "https://profile.tophhie.social",
+    "logo_uri": "https://profile.tophhie.social/favicon.png",
     "redirect_uris": [
-        "https://prqwx7th-5173.uks1.devtunnels.ms/auth/callback"
+        "https://profile.tophhie.social/auth/callback"
     ],
     "scope": "atproto repo:social.tophhie.profile?action=update repo:social.tophhie.profile?action=create repo:social.tophhie.profile?action=delete",
     "grant_types": [

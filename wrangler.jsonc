@@ -1,0 +1,15 @@
+{
+	"name": "tophhie-social-profile-worker",
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"compatibility_date": "2025-12-18",
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare",
+	},
+    "routes": [
+        {
+            "pattern": "profile.tophhie.social",
+            "custom_domain": true,
+        }
+    ]
+}

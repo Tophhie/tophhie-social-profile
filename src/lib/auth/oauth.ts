@@ -78,17 +78,37 @@ async function fetchRepo() {
 
 export async function fetchTophhieSocialProfile() {
     const result: undefined | { session: OAuthSession; state?: string | null } = await getClient().init();
-    if (result) {
-        const { session } = result;
-        const agent = new Agent(session);
+    if (!result) return;
+    const { session } = result;
+    const agent = new Agent(session);
+    try {
         const settings = await agent.com.atproto.repo.getRecord({
             repo: session.did,
             collection: 'social.tophhie.profile',
             rkey: 'self'
         });
-        console.log('Fetched Tophhie Social Settings:', settings);
+        console.log('Fetched Tophhie Social Profile:', settings);
         profileRecord.set(settings.data.value as TophhieSocialProfile);
         return settings.data.value;
+    } catch (err: unknown) {
+        const e = err as {
+            status?: number;
+            error?: string;
+            message?: string;
+            response?: {data?: {error?: string; message?: string}};
+        }
+        const status = e?.status;
+        const topLevelError = e?.error
+        const bodyError = e?.response?.data?.error;
+        const isRecordNotFound400 =
+            status === 400 &&
+            (topLevelError === 'RecordNotFound' || bodyError === 'RecordNotFound');
+
+        if (isRecordNotFound400) {
+            console.log('Tophhie Social Profile not found, initializing a new one.');
+            return await initialiseTophhieSocialProfile();
+        }
+        throw err;
     }
 }
 

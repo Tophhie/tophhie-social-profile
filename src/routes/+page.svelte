@@ -82,7 +82,7 @@
     {/if}
     {#if $user}
     <div class="w-full rounded-lg bg-indigo-100 text-indigo-700 text-lg grid place-items-center p-4">
-        <p class="font-medium">Welcome {$user.repo?.handle ?? 'User'}!</p>
+        <p class="font-medium">Welcome, {$user.repo?.handle ?? 'User'}!</p>
         <p>Below you'll find your profile information and settings, relating to your usage of Tophhie Social.</p>
     </div>
     <div class="w-full rounded-lg bg-gray-100 text-indigo-700 text-md grid p-4">
